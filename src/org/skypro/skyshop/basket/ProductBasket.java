@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class ProductBasket {
     public Product[] products = new Product[5];
 
+
     public void addProduct(Product product){
         int i = 0;
         for (; i < products.length; i++) {
@@ -27,7 +28,7 @@ public class ProductBasket {
             if (product == null) {
                 break;
             }
-            totalPrice += product.getPrice();
+            totalPrice += (int) product.getPrice();
         }
         System.out.println("Общая стоимость корзины: " + totalPrice);
     }
@@ -61,4 +62,15 @@ public class ProductBasket {
         Arrays.fill(products, null);
         System.out.println("Корзина очищена");
     }
+    
+    public void specialProduct(){
+        int amountSpecial = 0;
+        for (Product product : products) {
+            if (product.isSpecial()) {
+                amountSpecial++;
+            }
+        }
+        System.out.println("Специальных товаров: " + amountSpecial);
+    }
+    
 }
