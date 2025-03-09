@@ -2,12 +2,12 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.content.Article;
+import org.skypro.skyshop.exception.BestResultNotFound;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.search.SearchEngine;
-import org.skypro.skyshop.search.Searchable;
 
 import java.util.Arrays;
 
@@ -57,6 +57,21 @@ public class Main {
 
         System.out.println(Arrays.toString(search.search("text")));
 
+
+
+        try {
+            new SimpleProduct("1", 1);
+            new DiscountedProduct("1", 1, 1991);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println(search.searchSuitable("Шок"));
+            System.out.println(search.searchSuitable("ывфывфы"));
+        }catch (BestResultNotFound e){
+            System.out.println(e.getMessage());
+        }
 
     }
 }
