@@ -7,6 +7,7 @@ public class SimpleProduct extends Product{
         this.price = price;
     }
 
+    @Override
     public double getPrice(){
         return price;
     }
@@ -15,7 +16,6 @@ public class SimpleProduct extends Product{
     public boolean isSpecial() {
         return false;
     }
-
 
     @Override
     public String toString() {

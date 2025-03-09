@@ -1,10 +1,15 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.content.Article;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.search.Searchable;
+
+import java.util.Arrays;
 
 
 public class Main {
@@ -36,5 +41,22 @@ public class Main {
         productBasket.showBasketPrice();
 
         System.out.println(productBasket.checkProduct("Сыр") ? "Товар есть в корзине" : "Товара нету в корзине");
+
+        SearchEngine search = new SearchEngine(7);
+        search.add(product1);
+        search.add(product2);
+        search.add(product3);
+        search.add(product4);
+        search.add(product5);
+
+        Article article1 = new Article("article1", "text1 text1 text1");
+        Article article2 = new Article("article2", "text2 text2 text2");
+
+        search.add(article1);
+        search.add(article2);
+
+        System.out.println(Arrays.toString(search.search("text")));
+
+
     }
 }
