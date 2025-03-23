@@ -21,7 +21,7 @@ public class Main {
         Product product3 = new FixPriceProduct("Сыр");
         Product product4 = new DiscountedProduct("Чай", 139, 55);
         Product product5 = new DiscountedProduct("Шоколадка", 190, 19);
-        Product product6 = new FixPriceProduct("Винорад");
+        Product product6 = new FixPriceProduct("Сыр");
 
         productBasket.addProduct(product1);
         productBasket.addProduct(product2);
@@ -36,13 +36,12 @@ public class Main {
 
         System.out.println(productBasket.checkProduct("Сыр") ? "Товар есть в корзине" : "Товара нету в корзине");
 
-        productBasket.clearBasket();
         productBasket.showBasket();
         productBasket.showBasketPrice();
 
         System.out.println(productBasket.checkProduct("Сыр") ? "Товар есть в корзине" : "Товара нету в корзине");
 
-        SearchEngine search = new SearchEngine(7);
+        SearchEngine search = new SearchEngine();
         search.add(product1);
         search.add(product2);
         search.add(product3);
@@ -55,7 +54,7 @@ public class Main {
         search.add(article1);
         search.add(article2);
 
-        System.out.println(Arrays.toString(search.search("text")));
+        System.out.println((search.search("text")));
 
 
 
@@ -72,6 +71,12 @@ public class Main {
         }catch (BestResultNotFound e){
             System.out.println(e.getMessage());
         }
+
+        System.out.println(productBasket.removeElementInBasket("Сыр"));
+        System.out.println(productBasket.removeElementInBasket("asdasd"));
+        productBasket.showBasket();
+
+
 
     }
 }
