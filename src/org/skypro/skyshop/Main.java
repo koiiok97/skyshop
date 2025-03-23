@@ -9,9 +9,6 @@ import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.search.SearchEngine;
 
-import java.util.Arrays;
-
-
 public class Main {
     public static void main(String[] args) {
         ProductBasket productBasket = new ProductBasket();
@@ -47,6 +44,7 @@ public class Main {
         search.add(product3);
         search.add(product4);
         search.add(product5);
+        search.add(product6);
 
         Article article1 = new Article("article1", "text1 text1 text1");
         Article article2 = new Article("article2", "text2 text2 text2");
@@ -76,6 +74,7 @@ public class Main {
         System.out.println(productBasket.removeElementInBasket("asdasd"));
         productBasket.showBasket();
 
+        System.out.println("Результат поиска: " + search.search("л"));
 
 
     }
