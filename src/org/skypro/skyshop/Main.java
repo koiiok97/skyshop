@@ -15,10 +15,10 @@ public class Main {
 
         Product product1 = new SimpleProduct("Молоко", 120);
         Product product2 = new DiscountedProduct("Хлеб", 100, 20);
-        Product product3 = new FixPriceProduct("Сыр");
+        Product product3 = new FixPriceProduct("Сы1р11");
         Product product4 = new DiscountedProduct("Чай", 139, 55);
         Product product5 = new DiscountedProduct("Шоколадка", 190, 19);
-        Product product6 = new FixPriceProduct("Сыр");
+        Product product6 = new FixPriceProduct("Сы2р11");
 
         productBasket.addProduct(product1);
         productBasket.addProduct(product2);
@@ -55,18 +55,17 @@ public class Main {
         System.out.println((search.search("text")));
 
 
-
         try {
             new SimpleProduct("1", 1);
             new DiscountedProduct("1", 1, 1991);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
         try {
             System.out.println(search.searchSuitable("Шок"));
             System.out.println(search.searchSuitable("ывфывфы"));
-        }catch (BestResultNotFound e){
+        } catch (BestResultNotFound e) {
             System.out.println(e.getMessage());
         }
 
@@ -74,7 +73,7 @@ public class Main {
         System.out.println(productBasket.removeElementInBasket("asdasd"));
         productBasket.showBasket();
 
-        System.out.println("Результат поиска: " + search.search("л"));
+        System.out.println("Результат поиска: " + search.search("р11"));
 
 
     }

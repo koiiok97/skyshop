@@ -2,24 +2,23 @@ package org.skypro.skyshop.search;
 
 import org.skypro.skyshop.exception.BestResultNotFound;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class SearchEngine {
-    private List<Searchable> searchables = new LinkedList<>();
+    public Set<Searchable> searchables = new HashSet<>();
 
 
-    public Map<String, Searchable> search(String text) {
+    public Set<Searchable> search(String text) {
         if (text == null || text.isBlank()) {
             return null;
         }
 
-        Map<String, Searchable> result = new TreeMap<>();
+        Set<Searchable> result = new TreeSet<>();
         for (Searchable searchable : searchables) {
             if (searchable.getSearchTerm().contains(text)) {
-                result.put(searchable.getSearchTerm(), searchable);
+                result.add(searchable);
             }
         }
         return result;
@@ -28,11 +27,12 @@ public class SearchEngine {
     public Searchable searchSuitable(String search) throws BestResultNotFound {
         Searchable s = null;
         int maxRepeatingCount = 0;
-        for (int i = 0; i < searchables.size(); i++) {
-            int curRepeatingCount = getRepeatingSubstringCount(searchables.get(i).getSearchTerm(), search);
+
+        for (Searchable searchable : searchables) {
+            int curRepeatingCount = getRepeatingSubstringCount(searchable.getSearchTerm(), search);
             if (curRepeatingCount > maxRepeatingCount) {
                 maxRepeatingCount = curRepeatingCount;
-                s = searchables.get(i);
+                s = searchable;
             }
         }
 
@@ -58,5 +58,4 @@ public class SearchEngine {
     public void add(Searchable item) {
         searchables.add(item);
     }
-
 }
